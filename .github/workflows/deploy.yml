@@ -1,0 +1,31 @@
+# This is the name of your workflow. You can see this name in GitHub Actions tab.
+name: Deploy Static Site to VPS
+
+# "on" defines when this workflow should run
+on:
+  push:                  # Run workflow when someone pushes code to GitHub
+    branches:
+      - main             # Only run when code is pushed to the "main" branch
+  workflow_dispatch:
+    # Allows manual triggering of the workflow from GitHub Actions tab
+
+# Define the jobs in this workflow. Here we have only one job: deploy
+jobs:
+  deploy:
+    runs-on: ubuntu-latest   # The virtual machine (runner) GitHub will use to run this job
+
+    steps:                   # Steps are actions performed in this job
+      - name: Checkout repository
+        # This step downloads your code from GitHub into the runner
+        uses: actions/checkout@v4
+
+      - name: Deploy to VPS via SSH
+        # This step connects to your VPS using SSH and runs commands
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}       # Your VPS IP address stored securely in GitHub Secrets
+          username: ${{ secrets.VPS_USER }}   # SSH username on VPS stored as secret
+          key: ${{ secrets.VPS_SSH_KEY }}     # Private SSH key stored as secret
+          script: |                           # Commands to run on your VPS
+            cd /var/www/websitebhai.com/public_html       # Go to your website folder
+            git pull origin main              # Pull latest changes from GitHub
