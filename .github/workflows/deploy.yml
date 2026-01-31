@@ -27,5 +27,5 @@ jobs:
           username: ${{ secrets.VPS_USER }}   # SSH username on VPS stored as secret
           key: ${{ secrets.VPS_SSH_KEY }}     # Private SSH key stored as secret
           script: |                           # Commands to run on your VPS
-            cd /var/www/websitebhai.com/public_html       # Go to your website folder
+            cd /var/www/matrixipsolutions.com       # Go to your website folder
             git pull origin main              # Pull latest changes from GitHub
