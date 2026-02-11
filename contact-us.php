@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $subject = htmlspecialchars($_POST['subject']);
     $message = htmlspecialchars($_POST['message']);
 
-    $to = "yourgmail@gmail.com";  // 👈 apna Gmail yaha daalo
+    $to = "matrixipsolutions@gmail.com";  // 👈 apna Gmail yaha daalo
 
     $email_subject = "Website Contact: " . $subject;
 

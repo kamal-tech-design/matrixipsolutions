@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $service = htmlspecialchars($_POST['service']);
     $message = htmlspecialchars($_POST['message']);
 
-    $to = "yourgmail@gmail.com";   // 👈 apna Gmail yaha likho
+    $to = "matrixipsolutions@gmail.com";   // 👈 apna Gmail yaha likho
     $subject = "New Quote Request From Website";
 
     $body = "
