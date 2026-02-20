@@ -43,7 +43,7 @@
           $this.removeClass(showClass);
           $this.find($dropdownToggle).attr("aria-expanded", "false");
           $this.find($dropdownMenu).removeClass(showClass);
-        }
+        },
       );
     } else {
       $dropdown.off("mouseenter mouseleave");
@@ -118,36 +118,35 @@
 })(jQuery);
 
 $(document).ready(function () {
-  $("#quoteForm").on("submit", function (e) {
-    e.preventDefault();
-
-    $.ajax({
-      url: "send-mail.php",
-      type: "POST",
-      data: $(this).serialize(),
-      success: function (response) {
-        $("#responseMsg").html(response);
-        $("#quoteForm")[0].reset();
-      },
-    });
-  });
-
-  $("#contactForm").on("submit", function (e) {
-    e.preventDefault();
-
-    $.ajax({
-      url: "contact-us.php",
-      type: "POST",
-      data: $(this).serialize(),
-      success: function (response) {
-        $("#responseMsg").html(response);
-        $("#contactForm")[0].reset();
-      },
-      error: function () {
-        $("#responseMsg").html(
-          "<div class='alert alert-danger'>Something went wrong!</div>"
-        );
-      },
-    });
-  });
+  // $("#quoteForm").on("submit", function (e) {
+  //   e.preventDefault();
+  //   $.ajax({
+  //     url: "send-mail.php",
+  //     type: "POST",
+  //     data: $(this).serialize(),
+  //     success: function (response) {
+  //       $("#responseMsg").html(response);
+  //       $("#quoteForm")[0].reset();
+  //     },
+  //   });
+  // });
+  // $("#contactForm").on("submit", function (e) {
+  //   e.preventDefault();
+  //   console.log("Form submitted", $(this).serialize());
+  //   $.ajax({
+  //     url: "contact-us.php",
+  //     method: "POST",
+  //     data: $(this).serialize(),
+  //     success: function (response) {
+  //       $("#responseMsg").html(response);
+  //       $("#contactForm")[0].reset();
+  //     },
+  //     error: function (error) {
+  //       console.log("Error occurred", error);
+  //       $("#responseMsg").html(
+  //         `<div class='alert alert-danger'>Something went wrong! ${error}</div>`,
+  //       );
+  //     },
+  //   });
+  // });
 });

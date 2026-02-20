@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -340,7 +340,8 @@
                     class="form-control border-0 bg-light px-4"
                     placeholder="Your Name"
                     style="height: 55px"
-                    name="name"
+                    id="contactName"
+                    value="ankit"
                   />
                 </div>
                 <div class="col-md-6">
@@ -349,7 +350,8 @@
                     class="form-control border-0 bg-light px-4"
                     placeholder="Your Email"
                     style="height: 55px"
-                    name="email"
+                    id="contactEmail"
+                    value="info@matrixipsolutions.com"
                   />
                 </div>
                 <div class="col-12">
@@ -358,7 +360,8 @@
                     class="form-control border-0 bg-light px-4"
                     placeholder="Subject"
                     style="height: 55px"
-                    name="subject"
+                    id="contactSubject"
+                    value="tst"
                   />
                 </div>
                 <div class="col-12">
@@ -366,8 +369,11 @@
                     class="form-control border-0 bg-light px-4 py-3"
                     rows="4"
                     placeholder="Message"
-                    name="message"
-                  ></textarea>
+                    id="message"
+                    value="test message"
+                  >
+ asdfasdf sadf asdf</textarea
+                  >
                 </div>
                 <div class="col-12">
                   <button class="btn btn-primary w-100 py-3" type="submit">
@@ -379,6 +385,7 @@
                 </div>
               </div>
             </form>
+            <div id="status-message" class="mt-3">asdf</div>
           </div>
           <div class="col-lg-6 wow slideInUp" data-wow-delay="0.6s">
             <iframe
@@ -552,8 +559,40 @@
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/counterup/counterup.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
     <!-- Template Javascript -->
+    <script>
+      // alert("hello");
+      emailjs.init("1LCoQMitfHeeBFNcg");
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("Form submitted", document.getElementById("contactName").value);
+          emailjs
+            .send("service_lgriwhc", "template_penwhtr", {
+              name: document.getElementById("contactName").value,
+              email: document.getElementById("contactEmail").value,
+              message: document.getElementById("message").value,
+            })
+            .then(
+              function (response) {
+                alert("passed...", error);
+                document.getElementById("status-message").innerHTML =
+                  "<p style='color:green;'>Email sent successfully!</p>";
+              },
+              function (error) {
+                alert("FAILED...", error);
+                console.log("EmailJS error", error);
+                document.getElementById("status-message").innerHTML =
+                  "<p style='color:red;'>Failed to send email.</p>";
+              },
+            )
+            .finally((err) => {
+              console.log("EmailJS request completed", err);
+            });
+        });
+    </script>
     <script src="js/main.js"></script>
   </body>
 </html>
