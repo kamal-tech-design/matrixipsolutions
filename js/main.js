@@ -138,8 +138,9 @@ $(document).ready(function () {
       type: "POST",
       data: $(this).serialize(),
       success: function (response) {
+        console.log("Response received", response);
         $("#responseMsg").html(response);
-        $("#contactForm")[0].reset();
+        // $("#contactForm")[0].reset();
       },
       error: function (error) {
         console.log("Error occurred", error);
