@@ -24,11 +24,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
     echo "Prepared email with subject: $email_subject and body: $body"; // Debugging line
     try{
-        if (mail($to, $email_subject, $body, $headers)) {
-        echo "<div class='alert alert-success'>Message Sent Successfully!</div>";
-    } else {
-        echo "<div class='alert alert-danger'>Failed to Send Message.</div>";
-    }
+        $mail_result = mail($to, $email_subject, $body, $headers);
+        echo $mail_result;
+        if ($mail_result) {
+            echo "<div class='alert alert-success'>Message Sent Successfully!</div>";
+        } else {
+            echo "<div class='alert alert-danger'>Failed to Send Message.</div>";
+        }
     } catch (Exception $e) {
         echo "<div class='alert alert-danger'>Error occurred: " . $e->getMessage() . "</div>";
     }
