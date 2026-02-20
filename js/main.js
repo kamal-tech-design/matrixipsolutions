@@ -130,23 +130,23 @@ $(document).ready(function () {
   //     },
   //   });
   // });
-  // $("#contactForm").on("submit", function (e) {
-  //   e.preventDefault();
-  //   console.log("Form submitted", $(this).serialize());
-  //   $.ajax({
-  //     url: "contact-us.php",
-  //     method: "POST",
-  //     data: $(this).serialize(),
-  //     success: function (response) {
-  //       $("#responseMsg").html(response);
-  //       $("#contactForm")[0].reset();
-  //     },
-  //     error: function (error) {
-  //       console.log("Error occurred", error);
-  //       $("#responseMsg").html(
-  //         `<div class='alert alert-danger'>Something went wrong! ${error}</div>`,
-  //       );
-  //     },
-  //   });
-  // });
+  $("#contactForm").on("submit", function (e) {
+    e.preventDefault();
+    console.log("Form submitted", $(this).serialize());
+    $.ajax({
+      url: "contact-us.php",
+      type: "POST",
+      data: $(this).serialize(),
+      success: function (response) {
+        $("#responseMsg").html(response);
+        $("#contactForm")[0].reset();
+      },
+      error: function (error) {
+        console.log("Error occurred", error);
+        $("#responseMsg").html(
+          `<div class='alert alert-danger'>Something went wrong! ${error}</div>`,
+        );
+      },
+    });
+  });
 });
