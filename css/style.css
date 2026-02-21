@@ -46,12 +46,16 @@
 #spinner {
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.5s ease-out, visibility 0s linear 0.5s;
+  transition:
+    opacity 0.5s ease-out,
+    visibility 0s linear 0.5s;
   z-index: 99999;
 }
 
 #spinner.show {
-  transition: opacity 0.5s ease-out, visibility 0s linear 0s;
+  transition:
+    opacity 0.5s ease-out,
+    visibility 0s linear 0s;
   visibility: visible;
   opacity: 1;
 }
@@ -169,6 +173,12 @@ h6,
   }
 }
 
+@media (max-width: 370px) {
+  .navbar-brand img {
+    width: 140px;
+    height: auto;
+  }
+}
 @media (min-width: 992px) {
   .navbar-dark {
     position: absolute;
@@ -490,7 +500,8 @@ h6,
 }
 
 .bg-header {
-  background: linear-gradient(rgba(9, 30, 62, 0.7), rgba(9, 30, 62, 0.7)),
+  background:
+    linear-gradient(rgba(9, 30, 62, 0.7), rgba(9, 30, 62, 0.7)),
     url(../img/carousel-1.jpg) center center no-repeat;
   background-size: cover;
 }

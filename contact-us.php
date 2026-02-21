@@ -1,7 +1,7 @@
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
+    echo phpinfo();
     $name    = htmlspecialchars($_POST['name']);
     $email   = htmlspecialchars($_POST['email']);
     $subject = htmlspecialchars($_POST['subject']);
@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $headers = "From: $email\r\n";
     $headers .= "Reply-To: $email\r\n";
     $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-    echo "Prepared email with subject: $email_subject and body: $body"; // Debugging line
+    // Debugging line
     try{
         $mail_result = mail($to, $email_subject, $body, $headers);
         echo $mail_result;
